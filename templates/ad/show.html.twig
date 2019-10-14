@@ -1,12 +1,8 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}
-    {{ad.title}}
-{% endblock %}
+{% block title %}{{ad.title}}{% endblock %}
 
-
-
-{% block body %}
+{% block body %}   
     <div class="ad-title" style="background-image:url({{ ad.coverImage }})">
         <div class="container">
             <h1>{{ad.title}}</h1>
@@ -60,18 +56,22 @@
                 </div>
             </div>
             <div class="col">
+                {% set a = ad.author %}
                 <div class="row mb-3 align-items-center">
-                    <div class="col-4">
-                        <img src="http://placehold.it/64x64" alt="Avatar de Emilio">
+                    <div class="col-3">
+                    <a href="{{ path('user_show', {'slug':a.slug}) }}">
+                        <img src="{{ad.author.picture}}" class="avatar avatar-medium" alt="Avatar de {{a.fullName}}">
+                    </a>
                     </div>
-                <div class="col">
-                        <h3>Emilio Doria</h3>
-                        <span class="badge badge-primary">3 annonces</span>
+                    <div class="col">
+                        <a href="{{ path('user_show', {'slug':a.slug}) }}">
+                            <h3>{{a.fullName}}</h3>
+                        </a>
+                        <span class="badge badge-primary">{{a.ads | length}} annonces </span>
+                    </div>
                 </div>
-                <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Deleniti at odit assumenda fuga ipsum minus. Minus laborum praesentium eligendi maiores.</p>
-                <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Reprehenderit quia consectetur hic. At fugit explicabo eum ipsam laborum qui, iure minima dignissimos cum repellat vel?</p>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Et libero reprehenderit mollitia cumque. Dolor, minus.</p>
-            </div>
+                {{ a.description |raw }}
+            </div>   
         </div>
     </div>        
 
