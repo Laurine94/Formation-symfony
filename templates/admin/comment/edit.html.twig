@@ -1,0 +1,47 @@
+{% extends 'admin/base.html.twig' %}
+
+{% block title %}Modification du commentaire {{comment.id}}{% endblock %}
+
+{% form_theme form _self %}
+
+{% block body %}
+
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <h1 class="my-5">Modification du commentaire n°{{comment.id}}</h1>
+
+                <div class="alert alert-info">
+                    <dl class="row mt-2">
+                        <dt class="col-md-3">Annonce liée:</dt>
+                        <dd class="col-md-8">{{comment.ad.title}}</dd>
+
+                        <dt class="col-md-3">Auteur:</dt>
+                        <dd class="col-md-8">{{comment.author.fullName}}</dd>
+
+                        <dt class="col-md-3">Date de création:</dt>
+                        <dd class="col-md-8">{{comment.createdAt | date('d/m/Y H:i')}}</dd>
+
+                        <dt class="col-md-3">Note donnée:</dt>
+                        <dd class="col-md-8">{{comment.rating}}</dd>
+                    </dl>
+                </div>
+                {{form_start(form)}}
+
+                {{form_widget(form.content)}}
+
+                <button type="submit" class="btn btn-success">
+                    <i class="fas fa-check"></i>
+                    Valider les modifications du commentaire
+                </button>
+
+                {{form_end(form)}}
+            </div>
+        </div>
+    </div>
+
+
+{% endblock %}
+
+
+

@@ -25,6 +25,7 @@ class RegistrationType extends ApplicationType
             ->add('hash',PasswordType::class, $this->getConfiguration("Mot de passe", "Votre mot de passe..."))
             ->add('introduction',TextType::class, $this->getConfiguration("Introduction", "Présentez-vous en quelques mots.."))
             ->add('description',TextareaType::class, $this->getConfiguration("Description détaillée", "Présentez-vous en détail..."))
+            ->add('passwordConfirm',PasswordType::class, $this->getConfiguration("Confirmation du mot de passe", "Confirmez votre mot de passe..."))
         ;
     }
 
