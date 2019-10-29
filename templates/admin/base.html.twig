@@ -6,11 +6,10 @@
 
         <meta name="viewport" content="width=device-width, user-scalable=no">
 
-        <link rel="stylesheet" href="/css/bootstrap.min.css">
 
        <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.2/css/all.min.css">
 
-        <link rel="stylesheet" href="/css/app.css">
+        <link rel="stylesheet" href="{{asset('build/css/app.css')}}">
         
 
 
@@ -23,10 +22,7 @@
         {% block body %}{% endblock %}
 
         {% include "admin/partials/footer.html.twig" %}
-        <script src="/js/jquery.min.js"></script>
-        <script src="/js/popper.min.js"></script>
-        <script src="/js/bootstrap.min.js"></script>
-
+        <script src="{{asset('build/js/app.js')}}"></script>
         {% block javascripts %}{% endblock %}
     </body>
     

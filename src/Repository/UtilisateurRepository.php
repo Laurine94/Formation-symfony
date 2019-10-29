@@ -19,6 +19,19 @@ class UtilisateurRepository extends ServiceEntityRepository
         parent::__construct($registry, Utilisateur::class);
     }
 
+    public function findBestUsers($limit=2){
+        return $this->createQueryBuilder('u')
+                    ->join('u.ads','a')
+                    ->join('a.comments','c')
+                    ->select('u as user, AVG(c.rating) as avgRatings, COUNT(c) as sumComments')
+                    ->groupBy('u')
+                    ->having('COUNT(c) > 3')
+                    ->orderBy('avgRatings','DESC')
+                    ->setMaxResults($limit)
+                    ->getQuery()
+                    ->getResult();
+    }
+
     // /**
     //  * @return Utilisateur[] Returns an array of Utilisateur objects
     //  */
